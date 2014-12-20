@@ -68,14 +68,16 @@
     <ClCompile Include="CaptainAmericaWorld.cpp" />
     <ClCompile Include="Hurricane.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="CaptainAmericaWorld.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="Hurricane.h" />
-    <ClInclude Include="texture.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>

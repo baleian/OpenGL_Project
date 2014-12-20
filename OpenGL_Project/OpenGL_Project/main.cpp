@@ -2,11 +2,7 @@
 
 #include <Windows.h>
 #include <stdio.h>
-#include <math.h>
-#include <gl/glut.h>
-#include "Vector3D.h"
-
-#define PI	3.14159265358979323846f
+#include "common.h"
 
 #define WIDTH_MIN	-100.0f
 #define WIDTH_MAX	100.0f	// 100M
@@ -213,11 +209,13 @@ void DoKeyboard(unsigned char key, int x, int y)
 void DoDisplay(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glShadeModel(GL_FLAT);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CCW);
+	glEnable(GL_CULL_FACE);
 
 	glMatrixMode(GL_MODELVIEW);
-
-
 	glPushMatrix();
 	{
 		Vector3D view = camera_pos + direction;
@@ -229,16 +227,16 @@ void DoDisplay(void)
 
 		glPushMatrix();
 		{
-			DrawWorldTexture();
+			// DrawWorldTexture();
 		}
 		glPopMatrix();
 
 
 		glPushMatrix();
 		{
-			glColor3f(1.0f, 0.0f, 0.0f);
+			
 			glTranslatef(0.0f, HEIGHT_MIN + 5.0f, 0.0f);
-			glutWireSphere(5.0f, 50, 50);
+			CaptainAmericaWorld::getInstance()->Draw();
 		}
 		glPopMatrix();
 
