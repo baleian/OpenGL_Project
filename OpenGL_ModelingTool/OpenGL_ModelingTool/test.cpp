@@ -129,6 +129,9 @@ void DoMenu(int value)
 	case 9:
 		CaptainAmericaWorld::getInstance()->SetViewingCam(2);
 		break;
+	case 10:
+		CaptainAmericaWorld::getInstance()->SetViewingCam(3);
+		break;
 	}
 
 	glutPostRedisplay();
@@ -231,9 +234,9 @@ void ChangeSize(GLsizei w, GLsizei h)
 void main(void)
 {
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(1200, 1200);
+	glutInitWindowSize(800, 800);
 	glutInitWindowPosition(0, 0);
-	glutCreateWindow("12091602_이범준");
+	glutCreateWindow("12091602_이범준 - Captain America World");
 	glutMouseFunc(DoMouseClick);
 	glutMotionFunc(DoMouseDrag);
 	glutKeyboardFunc(DoKeyboard);
@@ -248,6 +251,7 @@ void main(void)
 	glutAddMenuEntry("Free View", 7);
 	glutAddMenuEntry("Viking View", 8);
 	glutAddMenuEntry("Hurricane View", 9);
+	glutAddMenuEntry("Train View", 10);
 
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
