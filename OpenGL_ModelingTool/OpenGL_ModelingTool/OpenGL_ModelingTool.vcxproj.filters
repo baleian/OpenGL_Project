@@ -36,6 +36,12 @@
     <ClCompile Include="Texture.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Viking.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vector2D.h">
@@ -59,24 +65,24 @@
     <ClInclude Include="Camera.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Viking.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="texture\captain_shield.bmp">
-      <Filter>리소스 파일\texture</Filter>
-    </Image>
-    <Image Include="texture\captain_america_shield.bmp">
-      <Filter>리소스 파일\texture</Filter>
-    </Image>
-    <Image Include="texture\captain_shield_back.bmp">
-      <Filter>리소스 파일\texture</Filter>
-    </Image>
-    <Image Include="texture\captain_shield_front.bmp">
       <Filter>리소스 파일\texture</Filter>
     </Image>
     <Image Include="texture\tex_Steel.bmp">
       <Filter>리소스 파일\texture</Filter>
     </Image>
     <Image Include="texture\tex_Steel_1.bmp">
+      <Filter>리소스 파일\texture</Filter>
+    </Image>
+    <Image Include="texture\tex_ground.bmp">
+      <Filter>리소스 파일\texture</Filter>
+    </Image>
+    <Image Include="texture\tex_sky.bmp">
       <Filter>리소스 파일\texture</Filter>
     </Image>
   </ItemGroup>

@@ -12,6 +12,12 @@ Hurricane::~Hurricane()
 {
 }
 
+void Hurricane::initCamera(void)
+{
+	hurricaneView = Camera(Point3D(2.5, 1, 0), Vector3D(-1, 0, 0), Vector3D(0, 0, 1));
+	pivotAxis = Vector3D(0, 0, 1);
+	center = Vector3D(0, 1.5, 0);
+}
 
 static void DrawHurricaneCase(void)
 {
@@ -162,42 +168,64 @@ static void DrawHurricanePivot(void)
 	glBegin(GL_QUAD_STRIP);
 	{
 		glTexCoord2f(0, 0);
-		glVertex3f(1, -0.35, -0.35);
-		glTexCoord2f(0, 0);
-		glVertex3f(-1, -0.35, -0.35);
-		glTexCoord2f(0, 0);
-		glVertex3f(1, 0.35, -0.35);
-		glTexCoord2f(0, 0);
-		glVertex3f(-1, 0.35, -0.35);
-		glTexCoord2f(0, 0);
-		glVertex3f(1, 0.35, 0.35);
-		glTexCoord2f(0, 0);
-		glVertex3f(-1, 0.35, 0.35);
-		glTexCoord2f(0, 0);
-		glVertex3f(1, -0.35, 0.35);
-		glTexCoord2f(0, 0);
-		glVertex3f(-1, -0.35, 0.35);
+		glVertex3f(1, -0.3, -0.3);
+		glTexCoord2f(0, 1);
+		glVertex3f(0.4, -0.3, -0.3);
+		glTexCoord2f(1, 0);
+		glVertex3f(1, 0.3, -0.3);
+		glTexCoord2f(1, 1);
+		glVertex3f(0.4, 0.3, -0.3);
+		glTexCoord2f(1, 0);
+		glVertex3f(1, 0.3, 0.3);
+		glTexCoord2f(1, 1);
+		glVertex3f(0.4, 0.3, 0.3);
+		glTexCoord2f(2, 0);
+		glVertex3f(1, -0.3, 0.3);
+		glTexCoord2f(2, 1);
+		glVertex3f(0.4, -0.3, 0.3);
 	}
 	glEnd();
+
+	glBegin(GL_QUAD_STRIP);
+	{
+		glTexCoord2f(0, 0);
+		glVertex3f(-0.4, -0.3, -0.3);
+		glTexCoord2f(0, 1);
+		glVertex3f(-1, -0.3, -0.3);
+		glTexCoord2f(1, 0);
+		glVertex3f(-0.4, 0.3, -0.3);
+		glTexCoord2f(1, 1);
+		glVertex3f(-1, 0.3, -0.3);
+		glTexCoord2f(1, 0);
+		glVertex3f(-0.4, 0.3, 0.3);
+		glTexCoord2f(1, 1);
+		glVertex3f(-1, 0.3, 0.3);
+		glTexCoord2f(2, 0);
+		glVertex3f(-0.4, -0.3, 0.3);
+		glTexCoord2f(2, 1);
+		glVertex3f(-1, -0.3, 0.3);
+	}
+	glEnd();
+
 	glBegin(GL_QUADS);
 	{
 		glTexCoord2f(0, 0);
-		glVertex3f(-1, -0.35, 0.35);
+		glVertex3f(-1, -0.3, 0.3);
 		glTexCoord2f(0, 1);
-		glVertex3f(-1, 0.35, 0.35);
+		glVertex3f(-1, 0.3, 0.3);
 		glTexCoord2f(1, 1);
-		glVertex3f(-1, 0.35, -0.35);
+		glVertex3f(-1, 0.3, -0.3);
 		glTexCoord2f(1, 0);
-		glVertex3f(-1, -0.35, -0.35);
+		glVertex3f(-1, -0.3, -0.3);
 
 		glTexCoord2f(0, 0);
-		glVertex3f(1, -0.35, -0.35);
+		glVertex3f(1, -0.3, -0.3);
 		glTexCoord2f(0, 1);
-		glVertex3f(1, 0.35, -0.35);
+		glVertex3f(1, 0.3, -0.3);
 		glTexCoord2f(1, 1);
-		glVertex3f(1, 0.35, 0.35);
+		glVertex3f(1, 0.3, 0.3);
 		glTexCoord2f(1, 0);
-		glVertex3f(1, -0.35, 0.35);
+		glVertex3f(1, -0.3, 0.3);
 	}
 	glEnd();
 
@@ -290,7 +318,7 @@ void Hurricane::Draw(void)
 		glTranslatef(0, 10.3, 0);
 		glRotated(rotPivot, 0, 0, 1);
 		glTranslatef(0, -10.3, 0);
-
+		
 		glPushMatrix();
 		glRotated(rotCase, 0, 1, 0);
 		DrawHurricaneCase();
@@ -300,6 +328,8 @@ void Hurricane::Draw(void)
 		glTranslatef(0, 0.3, 0);
 		DrawHurricanePivot();
 		glPopMatrix();
+
+		hurricaneView.pos.y += 0.3;
 	}
 	glPopMatrix();
 

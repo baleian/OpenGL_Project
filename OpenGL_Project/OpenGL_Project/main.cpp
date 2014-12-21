@@ -17,18 +17,15 @@ Point3D camera_pos;
 Vector3D direction;
 Vector3D direction_x_axis;
 GLfloat max_sight;
-GLfloat xAngle, yAngle;
 
 void SetupRC(void)
 {
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	camera_pos.Set(WIDTH_MIN, CAMERA_DEFAULT_HEIGHT, DEPTH_MIN);
 	direction.Set(0.0f, 0.0f, -1.0f);
 	direction_x_axis.Set(1.0f, 0.0f, 0.0f);
 	max_sight = sqrt(pow(WIDTH_MAX - WIDTH_MIN, 2) + pow(HEIGHT_MAX - HEIGHT_MIN, 2) + pow(DEPTH_MAX - DEPTH_MIN, 2));
-	xAngle = 0.0f;
-	yAngle = 0.0f;
 }
 
 const GLfloat gravity = -0.0098;
@@ -142,23 +139,23 @@ void DoKeyboard(unsigned char key, int x, int y)
 	switch (key) {
 	case 'a':
 	case 'A':
-		camera_pos.x -= direction_x_axis.x;
-		camera_pos.z -= direction_x_axis.z;
+		camera_pos.x -= (direction_x_axis.x / 5);
+		camera_pos.z -= direction_x_axis.z / 5;
 		break;
 	case 'd':
 	case 'D':
-		camera_pos.x += direction_x_axis.x;
-		camera_pos.z += direction_x_axis.z;
+		camera_pos.x += direction_x_axis.x / 5;
+		camera_pos.z += direction_x_axis.z / 5;
 		break;
 	case 'w':
 	case 'W':
-		camera_pos.x += direction.x;
-		camera_pos.z += direction.z;
+		camera_pos.x += direction.x / 5;
+		camera_pos.z += direction.z / 5;
 		break;
 	case 's':
 	case 'S':
-		camera_pos.x -= direction.x;
-		camera_pos.z -= direction.z;
+		camera_pos.x -= direction.x / 5;
+		camera_pos.z -= direction.z / 5;
 		break;
 	case 'q':
 	case 'Q':
